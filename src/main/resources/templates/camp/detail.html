@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+		<div class="row">
+			<table class="table">
+				<tr>
+					<td width="30%" class="text-center" rowspan="8">
+						<img th:src="${vo.poster}" style="width: 240px;height: 200px">
+					</td>
+					<td colspan="2">
+						<h3>[[${vo.title}]]&nbsp;<span style="color: orange" th:text="${vo.hit}"></span></h3>
+					</td>
+				</tr>
+				<tr>
+					<th width="15%">소개</th>
+					<td width="55%">[[${vo.intro}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">주소</th>
+					<td width="55%">[[${vo.addr}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">운영</th>
+					<td width="55%">[[${vo.managesttus}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">운영기간</th>
+					<td width="55%">[[${vo.operpdcl}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">시설</th>
+					<td width="55%">[[${vo.induty}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">환경</th>
+					<td width="55%">[[${vo.lctcl}]]</td>
+				</tr>
+				<tr>
+					<th width="15%">최소가격</th>
+					<td width="55%">[[${vo.price}]]</td>
+				</tr>
+			</table>
+			<table class="table">
+				<tr>
+					<td class="text-right">
+						<a class="btn btn-sm btn-danger" onclick="javascript:history.back()">목록</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
