@@ -22,6 +22,9 @@ p{
 </style>
 </head>
 <body>
-	<h1>test</h1>
+	<th:block th:insert="~{/main/header}"></th:block>
+	<div class="container">
+		<th:block th:insert="~{${main_html}}"></th:block>
+	</div>
 </body>
 </html>
