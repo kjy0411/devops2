@@ -43,12 +43,15 @@ public class MainController {
 		return "index";
 	}
 	@GetMapping("/camp/find")
-	public String camp_find(@RequestParam(name = "page",required = false) String page,Model model) {
+	public String camp_find(@RequestParam(name = "page",required = false) String page,@RequestParam(name = "fd",required = false) String fd,Model model) {
 		if(page==null)
 			page="1";
+		if(fd==null)
+			fd="";
 		int curpage=Integer.parseInt(page);
-		Map map=service.campListData(curpage);
+		Map map=service.campFindData(curpage,fd);
 		
+		model.addAttribute("fd",fd);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",map.get("totalpage"));

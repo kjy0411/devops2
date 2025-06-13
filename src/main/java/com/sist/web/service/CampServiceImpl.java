@@ -40,4 +40,27 @@ public class CampServiceImpl implements CampService{
 		return cDao.findByCno(cno);
 	}
 	
+	@Override
+	public Map campFindData(int curpage,String fd) {
+		Map map=new HashMap();
+		int rowSize=12;
+		int start=(curpage*rowSize)-(rowSize-1);
+		int end=curpage*rowSize;
+		
+		List<CampListVO> list=cDao.campFindData(start, end,fd);
+		int count=cDao.campFindTotalCount(fd);
+		int totalpage=(int)(Math.ceil(count/(double)rowSize));
+		
+		final int BLOCK=10;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage)
+			endPage=totalpage;
+		
+		map.put("list", list);
+		map.put("totalpage", totalpage);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		return map;
+	}
 }

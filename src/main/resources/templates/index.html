@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style type="text/css">
 .container{
 	margin-top: 50px;
@@ -23,8 +24,6 @@ p{
 </head>
 <body>
 	<th:block th:insert="~{main/header}"></th:block>
-	<div class="container">
-		<th:block th:insert="~{${main_html}}"></th:block>
-	</div>
+	<th:block th:insert="~{${main_html}}"></th:block>
 </body>
 </html>

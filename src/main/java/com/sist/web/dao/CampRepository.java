@@ -17,4 +17,14 @@ public interface CampRepository extends JpaRepository<CampEntity, Integer>{
 	public List<CampListVO> campListData(@Param("start") Integer start,@Param("end") Integer end);
 	
 	public CampEntity findByCno(int cno);
+	
+	@Query(value = "SELECT cno,poster,title,intro,hit,rcount,num "
+			+ "FROM (SELECT cno,poster,title,intro,hit,rcount,rownum as num "
+			+ "FROM (SELECT cno,poster,title,intro,hit,rcount "
+			+ "FROM camp WHERE poster IS NOT null AND title LIKE '%'||:fd||'%' ORDER BY cno)) "
+			+ "WHERE num BETWEEN :start AND :end",nativeQuery = true)
+	public List<CampListVO> campFindData(@Param("start") Integer start,@Param("end") Integer end,@Param("fd") String fd);
+	
+	@Query(value = "SELECT COUNT(*) FROM camp WHERE poster IS NOT null AND title LIKE '%'||:fd||'%'",nativeQuery = true)
+	public int campFindTotalCount(@Param("fd") String fd);
 }

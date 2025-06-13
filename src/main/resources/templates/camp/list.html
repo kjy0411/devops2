@@ -25,6 +25,8 @@
 				<li th:class="${curpage==i}?'active':''" th:each="i:${#numbers.sequence(startPage,endPage)}"><a th:href="@{list(page=${i})}" th:text="${i}"></a></li>
 				<li th:if="${endPage<totalpage}"><a th:href="@{list(page=${endPage+1})}">&gt;</a></li>
 			</ul>
+			<br>
+			<span class="text-center">[[${curpage}]] page / [[${totalpage}]] pages</span>
 		</div>
 	</div>
 </body>
