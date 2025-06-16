@@ -64,7 +64,7 @@ public class BoardServiceImpl implements BoardService{
 	public void boardInsert(BoardEntity vo) {
 		vo.setHit(0);
 		vo.setRegdate(new Date());
-		
+		vo.setNo(maxNo());
 		bDao.save(vo);
 	}
 	
