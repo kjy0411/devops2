@@ -50,7 +50,7 @@ jobs:
 
     - name: Deploy with rsync
       run: |
-        timeout 180s rsync -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+        timeout 900s rsync -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
           -avz build/libs/*.jar ubuntu@${{ vars.IP_ADDRESS }}:~/app||true
 
 
