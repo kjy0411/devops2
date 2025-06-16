@@ -33,9 +33,11 @@
 					</tr>
 					<tr>
 						<td colspan="5" class="text-center">
-							<a href="#" class="btn btn-sm btn-info">이전</a>
-							[[${curpage}]] page / [[${totalpage}]] pages
-							<a href="#" class="btn btn-sm btn-info">다음</a>
+							<ul class="pagination">
+								<li th:if="${startPage>1}"><a th:href="@{list(page=${startPage-1})}">&lt;</a></li>
+								<li th:class="${curpage==i}?'active':''" th:each="i:${#numbers.sequence(startPage,endPage)}"><a th:href="@{list(page=${i})}" th:text="${i}"></a></li>
+								<li th:if="${endPage<totalpage}"><a th:href="@{list(page=${endPage+1})}">&gt;</a></li>
+							</ul>
 						</td>
 					</tr>
 				</tbody>
