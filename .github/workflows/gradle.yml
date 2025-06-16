@@ -49,9 +49,7 @@ jobs:
     #    kill -9 $(ps -ef | grep devops | grep -v grep | head -n 1 | awk '{print $2}') || true
 
     - name: Deploy with rsync
-      run: |
-        timeout 900s rsync -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-          -avz build/libs/*.jar ubuntu@${{ vars.IP_ADDRESS }}:~/app||true
+      run: scp -C -o CompressionLevel=0 -o StrictHostKeyChecking=no -o ConnectionTimeout=5 build/libs/*.jar ubuntu@본인aws서버공인IP:~/app
 
 
     - name: Run SSH commands
