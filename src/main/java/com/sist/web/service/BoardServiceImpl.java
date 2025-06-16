@@ -64,14 +64,11 @@ public class BoardServiceImpl implements BoardService{
 	public void boardInsert(BoardEntity vo) {
 		vo.setHit(0);
 		vo.setRegdate(new Date());
-		vo.setNo(maxNo());
 		
 		bDao.save(vo);
-		
 	}
 	
-	public int maxNo()
-	{
+	public int maxNo() {
 		return bDao.maxNo();
 	}
 }
