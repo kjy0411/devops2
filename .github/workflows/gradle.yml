@@ -50,7 +50,7 @@ jobs:
 
     - name: Deploy to Server with rsync
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/libs/*.jar ubuntu@본인aws서버공인IP:~/app
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/libs/*.jar ubuntu@${{ vars.IP_ADDRESS }}:~/app
 
 
     - name: Run SSH commands
