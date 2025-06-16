@@ -48,8 +48,9 @@ jobs:
     #  run: |
     #    kill -9 $(ps -ef | grep devops | grep -v grep | head -n 1 | awk '{print $2}') || true
 
-    - name: Deploy with rsync
-      run: scp -C -o CompressionLevel=0 -o StrictHostKeyChecking=no -o ConnectionTimeout=5 build/libs/*.jar ubuntu@본인aws서버공인IP:~/app
+    - name: Deploy to Server with rsync
+      run: |
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/libs/*.jar ubuntu@본인aws서버공인IP:~/app
 
 
     - name: Run SSH commands
